@@ -57,9 +57,8 @@ while True:
     if command == "8":
         x = input("uzrakstiet nosaukumu:")
         for movie in watchlist:
-            if x in movie:
-                watchlist.append(movie)
-        print(x)
+            if x in movie["Nosaukums"]:
+                print(movie["Nosaukums"])
     if command == "9":
         with open('watchlist.json', 'w') as outfile:
             json.dump(watchlist, outfile)
