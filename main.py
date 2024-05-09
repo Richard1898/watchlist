@@ -12,29 +12,29 @@
 import json
 watchlist_file = open('watchlist.json') 
 watchlist = json.load(watchlist_file) 
-m={}
+add_film={}
 while True:
     command = input("\nChoose command(1-9):")
     if command == "1":
-        m = {
+        add_film = {
         "Nosaukums": input("Uzrakstiet Nosaukumu: "),
         "Reitings": int(input("Uzrakstiet Reitingu: "))
         }
-        if 10 >= m["Reitings"] and m["Reitings"]> 0:  
-            if 120 >= len(m["Nosaukums"]) and len(m["Nosaukums"])>= 2: 
-                watchlist.append(m)
+        if 10 >= add_film["Reitings"] and add_film["Reitings"]> 0:  
+            if 120 >= len(add_film["Nosaukums"]) and len(add_film["Nosaukums"])>= 2: 
+                watchlist.append(add_film)
             else:
                 print("Inncorrect nosaukums")
         else:
             print("Inncorrect reiting")
     if command == "2":
-        c = int(input("Ievadi indeksu kuri grib dzest: "))
-        watchlist.pop(c)
+        dzest_filmu = int(input("Ievadi indeksu kuri grib dzest: "))
+        watchlist.pop(dzest_filmu)
         
     if command == "3":
         print(watchlist)
-        g = int(input("uzrakstiet kuru filmu skatijies: "))
-        watchlist[g]['Skatiju'] = 'Ja'
+        watched_film = int(input("uzrakstiet kuru filmu skatijies: "))
+        watchlist[watched_film]['Skatiju'] = 'Ja'
     if command == "4":
         watched = []
         for movie in watchlist:
@@ -55,9 +55,9 @@ while True:
     if command == "7":
         watchlist.clear()
     if command == "8":
-        x = input("uzrakstiet nosaukumu:")
+        search_film_name = input("uzrakstiet nosaukumu:")
         for movie in watchlist:
-            if x in movie["Nosaukums"]:
+            if search_film_name in movie["Nosaukums"]:
                 print(movie["Nosaukums"])
     if command == "9":
         with open('watchlist.json', 'w') as outfile:
