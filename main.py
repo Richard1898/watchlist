@@ -20,8 +20,8 @@ while True:
         "Nosaukums": input("Uzrakstiet Nosaukumu: "),
         "Reitings": int(input("Uzrakstiet Reitingu: "))
         }
-        if 10 >= add_film["Reitings"] and add_film["Reitings"]> 0:  
-            if 120 >= len(add_film["Nosaukums"]) and len(add_film["Nosaukums"])>= 2: 
+        if 10 >= add_film["Reitings"] and add_film["Reitings"]> 0:  #валидация рейтинга
+            if 120 >= len(add_film["Nosaukums"]) and len(add_film["Nosaukums"])>= 2: #валидация названия
                 watchlist.append(add_film)
             else:
                 print("Inncorrect nosaukums")
@@ -37,14 +37,14 @@ while True:
         watchlist[watched_film]['Skatiju'] = 'Ja'
     if command == "4":
         watched = []
-        for movie in watchlist:
-            if 'Skatiju' in movie and movie['Skatiju'] == 'Ja':
+        for movie in watchlist:#meklejam visas filmus kuras skatijamies
+            if 'Skatiju' in movie and movie['Skatiju'] == 'Ja':#saglabajam ka šis filmu skatijam
                 watched.append(movie)
         print(watched[:20])
     if command == "5":
         not_watched = []
-        for movie in watchlist:
-            if 'Skatiju' in movie and movie['Skatiju'] == 'Ne':
+        for movie in watchlist:#meklejam visas filmus kuras skatijamies
+            if 'Skatiju' in movie and movie['Skatiju'] == 'Ne':#saglabajam ka šis filmu ne skatijam
                 not_watched.append(movie)
         print(not_watched[:20])
     if command == "6":
@@ -56,8 +56,8 @@ while True:
         watchlist.clear()
     if command == "8":
         search_film_name = input("uzrakstiet nosaukumu:")
-        for movie in watchlist:
-            if search_film_name in movie["Nosaukums"]:
+        for movie in watchlist:#meklejam visas filmus nosaukumu
+            if search_film_name in movie["Nosaukums"]:#atradam lidzīgu nosaukumu
                 print(movie["Nosaukums"])
     if command == "9":
         with open('watchlist.json', 'w') as outfile:
